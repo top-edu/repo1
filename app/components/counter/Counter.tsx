@@ -23,7 +23,7 @@ export const Counter = () => {
 
   const incrementValue = Number(incrementAmount) || 0;
 
-  const vercelUrl = process.env.VERCEL_URL;
+  const vercelUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   return (
     <div>
