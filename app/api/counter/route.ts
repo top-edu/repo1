@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { middleware } from "../middleware";
+import { middleware } from "../tools/middleware";
 
 export async function POST(request: NextRequest) {
   const headers = middleware(request);
