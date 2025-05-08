@@ -23,12 +23,12 @@ export const Counter = () => {
 
   const incrementValue = Number(incrementAmount) || 0;
 
-  const vercelUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   return (
     <div>
       <div className={styles.row}>
-        vercelUrl:{vercelUrl}
+        vercelUrl:{baseUrl}
         <button
           className={styles.button}
           aria-label="Decrement value"
