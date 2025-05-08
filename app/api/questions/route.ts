@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const questions = await prisma.questions.findMany();
+  const questions = await prisma.questions.findMany({ take: 10 });
 
   return new NextResponse(JSON.stringify({ questions }), {
     status: 200,
