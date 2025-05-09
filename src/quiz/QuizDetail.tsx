@@ -1,4 +1,13 @@
-import { Box, Card, Chip, Divider, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Chip,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { InQuizTypes } from "../types/InQuizTypes";
 
 type Props = {
@@ -17,7 +26,11 @@ export default function QuizDetail({ q }: Props) {
             Question
           </Typography>
         </Stack>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        <Typography
+          variant="body1"
+          gutterBottom
+          sx={{ color: "text.secondary" }}
+        >
           {q.content}
         </Typography>
       </Box>
@@ -26,13 +39,44 @@ export default function QuizDetail({ q }: Props) {
         <Typography gutterBottom variant="body2">
           Select Answer
         </Typography>
-        <Stack direction="row" spacing={1}>
-          <Chip color="primary" label={q.answerA} size="small" />
-          <Chip color="primary" label={q.answerB} size="small" />
-          <Chip color="primary" label={q.answerC} size="small" />
-          <Chip color="primary" label={q.answerD} size="small" />
-          <Chip color="primary" label={q.answerE} size="small" />
-        </Stack>
+
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid size={6}>
+            {q.answerA && (
+              <Button fullWidth variant="outlined">
+                {q.answerA}
+              </Button>
+            )}
+          </Grid>
+          <Grid size={6}>
+            {q.answerB && (
+              <Button fullWidth variant="outlined">
+                {q.answerB}
+              </Button>
+            )}
+          </Grid>
+          <Grid size={6}>
+            {q.answerC && (
+              <Button fullWidth variant="outlined">
+                {q.answerC}
+              </Button>
+            )}
+          </Grid>
+          <Grid size={6}>
+            {q.answerD && (
+              <Button fullWidth variant="outlined">
+                {q.answerD}
+              </Button>
+            )}
+          </Grid>
+          <Grid size={6}>
+            {q.answerE && (
+              <Button fullWidth variant="outlined">
+                {q.answerE}
+              </Button>
+            )}
+          </Grid>
+        </Grid>
       </Box>
     </Card>
   );
