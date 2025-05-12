@@ -8,9 +8,11 @@ interface PageParams {
 
 export default async function Page({ params }: PageParams) {
   const { setNo } = await params;
-  console.log("se======================tNo", setNo);
+  console.log("======================setNo", setNo);
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  console.log("======================baseUrl", baseUrl);
 
-  const res = await fetch(`http://localhost:3000/api/quiz?setNo=${setNo}`, {
+  const res = await fetch(`${baseUrl}/quiz?setNo=${setNo}`, {
     cache: "no-store",
   });
 
