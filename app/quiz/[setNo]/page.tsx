@@ -1,16 +1,23 @@
 import Quiz from "@/src/quiz/Quiz";
 
-type Props = {
-  params: { setNo: string };
-};
+interface PageParams {
+  params: {
+    setNo: string;
+  };
+}
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: PageParams) {
   const { setNo } = await params;
   console.log("se======================tNo", setNo);
 
   const res = await fetch(`http://localhost:3000/api/quiz?setNo=${setNo}`, {
     cache: "no-store", // use 'force-cache' or 'no-store' based on your needs
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch quiz data");
+  }
+
   const data = await res.json();
   // console.log("data.questions", data.questions);
 
