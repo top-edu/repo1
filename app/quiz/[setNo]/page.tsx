@@ -11,7 +11,7 @@ export default async function Page({ params }: PageParams) {
   console.log("se======================tNo", setNo);
 
   const res = await fetch(`http://localhost:3000/api/quiz?setNo=${setNo}`, {
-    cache: "no-store", // use 'force-cache' or 'no-store' based on your needs
+    cache: "no-store",
   });
 
   if (!res.ok) {
