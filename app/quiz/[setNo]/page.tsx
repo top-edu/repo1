@@ -1,9 +1,9 @@
 import Quiz from "@/src/quiz/Quiz";
 
 interface PageParams {
-  params: {
+  params: Promise<{
     setNo: string;
-  };
+  }>;
 }
 
 export default async function Page({ params }: PageParams) {
