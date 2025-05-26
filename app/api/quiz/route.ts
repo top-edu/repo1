@@ -29,9 +29,9 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { setNo, type, categoryId, questions } = body;
+    const questions = body.questions;
 
-    if (!setNo || !Array.isArray(questions)) {
+    if (!Array.isArray(questions)) {
       return new NextResponse(
         JSON.stringify({
           error: "Invalid input: setNo and questions are required.",
@@ -43,11 +43,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Create multiple questions
     const createdQuestions = await prisma.questions.createMany({
       data: questions.map((q: any) => ({
-        setNo,
-        type: q.type || type || "TS",
-        categoryId: q.categoryId || categoryId || null,
+        setNo: q.setNo,
+        type: q.type,
+        categoryId: q.categoryId,
         content: q.content,
         answerA: q.answerA,
         answerB: q.answerB,
@@ -55,8 +56,8 @@ export async function POST(request: NextRequest) {
         answerD: q.answerD,
         answerE: q.answerE,
         correctAnswer: q.correctAnswer,
-        note: q.note || null,
-        level: q.level || null,
+        note: q.note,
+        level: q.level,
       })),
     });
 
