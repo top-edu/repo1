@@ -26,7 +26,7 @@ export default function QuizDetail({ q }: Props) {
           <Typography gutterBottom variant="h5" component="div">
             Question
           </Typography>{" "}
-          <Typography>1 of 15</Typography>
+          <Typography>1 of 15{}</Typography>
         </Stack>
       </div>
       <CardContent>
